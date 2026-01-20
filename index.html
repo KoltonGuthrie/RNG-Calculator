@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Drop Chance Calculator</title>
+    <link rel="stylesheet" href="styles/drop-chance.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Drop Chance Calculator</h1>
+        <form id="chanceForm">
+            <label for="petChance">
+                Pet Chance (1 in X):
+            </label>
+            <input type="number" id="petChance" min="1" required>
+            <label for="luck">
+                Luck (%):
+            </label>
+            <input type="number" id="luck" min="0" required>
+            <button type="submit">Calculate</button>
+        </form>
+        <div class="result" id="result"></div>
+        <div class="explanation">
+                        <strong>Formula:</strong> <span id="math-formula"></span><br>
+        </div>
+    </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script defer>
+            document.addEventListener('DOMContentLoaded', function() {
+                if (window.katex) {
+                    katex.render('AdjustedChange = PetChance \\times \\left(1 + \\frac{Luck}{100}\\right)', document.getElementById('math-formula'));
+                }
+            });
+        </script>
+</div>
+    <script src="scripts/drop-chance.js"></script>
+</body>
+</html>
+</body>
+</html>
