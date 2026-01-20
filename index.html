@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="styles/drop-chance.css">
 </head>
 <body>
-    <div class="container">
+        <div class="main-flex">
+            <div class="container">
         <h1>Drop Chance Calculator</h1>
         <form id="chanceForm">
             <label for="petChance">
@@ -21,11 +22,27 @@
             <input type="number" id="luck" min="0" required>
             <button type="submit">Calculate</button>
         </form>
-        <div class="result" id="result"></div>
+            <button id="toggleLuauInput" type="button" style="width:100%;margin-bottom:1em;">Show Luau Drops Table</button>
+            <div class="luau-input-section" id="luauInputSection" style="display:none;">
+                <label for="luauInput">Paste Luau Drops Table:</label>
+                <textarea id="luauInput" rows="10" style="width:100%;margin-top:0.5em;"></textarea>
+            </div>
+        <!-- Result table moved to sidebar -->
         <div class="explanation">
                         <strong>Formula:</strong> <span id="math-formula"></span><br>
+                        <div class="info-text" style="margin-top:1em;color:#ffe066;font-size:0.98em;">
+                            <strong>Note:</strong> These odds do <u>not</u> reflect real drop rates, as item rarities are unknown. This is the odds <b>if</b> the item was affected by odds.
+                        </div>
+                </div>
+            </div>
+                <div class="sidebar resizable-sidebar" id="sidebar">
+                <h2>Drop Results</h2>
+                <input id="resultSearch" type="text" placeholder="Search drops..." style="width:100%;margin-bottom:0.5em;padding:0.5em;border-radius:6px;border:1px solid #333;background:#22272b;color:#f3f3f3;">
+                <div id="mutation-tags"></div>
+                <div id="result-container" style="resize: vertical; overflow: auto; min-height: 120px; max-height: 80vh;"><div id="result"></div></div>
+                <!-- Tree & Drop Summary removed -->
+            </div>
         </div>
-    </div>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
         <script defer>
@@ -36,7 +53,7 @@
             });
         </script>
 </div>
-    <script src="scripts/drop-chance.js"></script>
+    <script type="module" src="scripts/drop-chance.js"></script>
 </body>
 </html>
 </body>
