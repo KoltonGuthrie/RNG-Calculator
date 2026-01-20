@@ -1,3 +1,15 @@
+/* Luau input textarea dark background */
+#luauInput {
+    background: #22272b;
+    color: #f3f3f3;
+    border: 1.5px solid #3a8dde;
+    border-radius: 10px;
+    font-size: 1em;
+    padding: 0.7em;
+    box-sizing: border-box;
+    transition: border 0.2s, background 0.2s;
+    resize: vertical;
+}
 #result-container::-webkit-scrollbar {
     width: 10px;
     background: #23272a;
@@ -62,7 +74,8 @@
     margin-top: 3em;
     margin-bottom: 3em;
     min-height: 120px;
-    height: 80vh;
+    /* height: 80vh; removed to allow unlimited vertical resizing */
+    max-height: none;
     resize: both;
     overflow: auto;
     display: flex;
@@ -71,7 +84,9 @@
     top: 2em;
     align-self: flex-start;
     gap: 1.2em;
+    transition: min-height 0.2s, margin 0.2s;
 }
+
 
 #result-container {
     flex: 1 1 auto;
@@ -132,8 +147,7 @@ input.required-highlight {
     color: #f3f3f3;
     margin-top: 3em;
     margin-bottom: 3em;
-    height: 80vh;
-    max-height: 700px;
+    /* height: 80vh; removed to allow sidebar to shrink */
     display: flex;
     flex-direction: column;
     position: sticky;

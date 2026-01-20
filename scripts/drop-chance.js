@@ -101,6 +101,7 @@ function renderDropChancesTable(parsed, luck, searchTerm = '', mutationFilter = 
     return html;
 }
 
+
 const petChanceInput = document.getElementById('petChance');
 const luauInput = document.getElementById('luauInput');
 const luckInput = document.getElementById('luck');
@@ -108,6 +109,10 @@ const resultDiv = document.getElementById('result');
 let resultSearchInput = null;
 let lastParsed = null;
 let lastLuck = 0;
+const sidebar = document.getElementById('sidebar');
+const resultContainer = document.getElementById('result-container');
+
+// .empty logic removed
 
 let mutationFilter = [];
 // Toggle Luau input visibility (summary section removed)
@@ -203,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Attach Calculate button handler (chanceForm submit)
+
     document.getElementById('chanceForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const luauText = luauInput.value.trim();
@@ -232,6 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
             lastLuck = 0;
             mutationTagsDiv.innerHTML = '';
             selectedMutations = [];
+            // updateResultContainerMinHeight();
             return;
         }
 
@@ -245,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateMutationTags(parsed);
             // Render with filter
             resultDiv.innerHTML = renderDropChancesTable(parsed, lastLuck, resultSearchInput ? resultSearchInput.value : '', selectedMutations);
+            // updateResultContainerMinHeight();
             return;
         }
 
@@ -253,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
         petChanceInput.classList.add('required-highlight');
         mutationTagsDiv.innerHTML = '';
         selectedMutations = [];
+        // updateResultContainerMinHeight();
     });
 
     // When searching, re-render with mutation filter
@@ -261,6 +270,9 @@ document.addEventListener('DOMContentLoaded', function() {
         resultSearchInput.addEventListener('input', function() {
             if (!lastParsed) return;
             resultDiv.innerHTML = renderDropChancesTable(lastParsed, lastLuck, resultSearchInput.value, selectedMutations);
+            // updateResultContainerMinHeight();
         });
     }
+
+    // .empty logic removed
 });
